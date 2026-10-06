@@ -9,6 +9,7 @@ import org.sysimc.utils.PathFXML;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.nio.file.Paths;
 
 public class Main extends Application {
     @Override
@@ -16,7 +17,9 @@ public class Main extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader();
         Parent root =
                 fxmlLoader.load(new FileInputStream(PathFXML.pathBase()+ "\\main-view.fxml"));
-        Scene scene = new Scene(root, 320, 240);
+        Scene scene = new Scene(root, 800, 600
+        );
+        scene.getStylesheets().add(Paths.get(PathFXML.pathBase(), "button-glass.css").toUri().toString());
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();

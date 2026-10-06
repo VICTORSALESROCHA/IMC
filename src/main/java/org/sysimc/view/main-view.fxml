@@ -16,44 +16,38 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="619.0" prefWidth="890.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="543.0" prefWidth="797.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.sysimc.controller.MainController">
    <children>
       <MenuBar>
-        <menus>
-          <Menu mnemonicParsing="false" text="File">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-            </items>
-          </Menu>
-        </menus>
+         <menus>
+            <Menu mnemonicParsing="false" text="Pessoa">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Close" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Edit">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Delete" />
+               </items>
+            </Menu>
+         </menus>
       </MenuBar>
       <HBox prefHeight="341.0" prefWidth="890.0">
          <children>
             <VBox prefHeight="317.0" prefWidth="424.0">
                <children>
                   <GridPane prefHeight="259.0" prefWidth="379.0">
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="20.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
                         <RowConstraints minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="20.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="20.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
+                        <RowConstraints minHeight="20.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="20.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
                      <children>
                         <Label text="Nome:">
                            <GridPane.margin>
@@ -62,17 +56,17 @@
                         </Label>
                         <Label text="Altura:" GridPane.rowIndex="2" />
                         <Label text="Peso:" GridPane.rowIndex="4" />
-                        <TextField promptText="Digite seu nome" GridPane.rowIndex="1">
+                        <TextField fx:id="txtNome" promptText="Digite seu nome" GridPane.rowIndex="1">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </TextField>
-                        <TextField promptText="Digite sua altura" GridPane.rowIndex="3">
+                        <TextField fx:id="txtAltura" promptText="Digite sua altura" GridPane.rowIndex="3">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </TextField>
-                        <TextField promptText="Digite seu peso" GridPane.rowIndex="5">
+                        <TextField fx:id="txtPeso" promptText="Digite seu peso" GridPane.rowIndex="5">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -84,17 +78,27 @@
                   </GridPane>
                   <HBox alignment="CENTER" prefHeight="43.0" prefWidth="400.0">
                      <children>
-                        <Button mnemonicParsing="false" prefHeight="32.0" prefWidth="120.0" text="Calcular IMC">
+                        <Button mnemonicParsing="false" onAction="#onCalcularIMCClick" prefHeight="32.0" prefWidth="120.0" styleClass="glass-button" text="Calcular IMC">
                            <HBox.margin>
                               <Insets bottom="10.0" top="10.0" />
                            </HBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" prefHeight="32.0" prefWidth="120.0" text="Salvar">
+                        <Button mnemonicParsing="false"
+                                onAction="#onSalvarClick"
+                                prefHeight="32.0"
+                                prefWidth="120.0"
+                                styleClass="glass-button"
+                                text="Salvar">
                            <HBox.margin>
                               <Insets bottom="10.0" top="10.0" />
                            </HBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" prefHeight="32.0" prefWidth="120.0" text="Carregar Dados">
+                        <Button mnemonicParsing="false"
+                                onAction="#onCarregarDadosClick"
+                                prefHeight="32.0"
+                                prefWidth="120.0"
+                                styleClass="glass-button"
+                                text="Carregar Dados">
                            <HBox.margin>
                               <Insets bottom="10.0" top="10.0" />
                            </HBox.margin>
@@ -113,7 +117,7 @@
                         <Font name="System Bold" size="26.0" />
                      </font>
                   </Label>
-                  <Label text="00.00">
+                  <Label fx:id="lbIMC" text="00.00">
                      <VBox.margin>
                         <Insets bottom="20.0" top="20.0" />
                      </VBox.margin>
@@ -121,7 +125,7 @@
                         <Font size="96.0" />
                      </font>
                   </Label>
-                  <Label>
+                  <Label fx:id="lbClassificacao">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -136,17 +140,26 @@
             <Insets />
          </VBox.margin>
       </HBox>
-      <TableView prefHeight="222.0" prefWidth="890.0">
-        <columns>
-          <TableColumn prefWidth="44.0" text="ID" />
-          <TableColumn prefWidth="278.0" text="Nome" />
-            <TableColumn prefWidth="155.0" text="Altura" />
-            <TableColumn prefWidth="191.0" text="Peso" />
-            <TableColumn prefWidth="221.0" text="IMC" />
-        </columns>
-         <VBox.margin>
-            <Insets />
-         </VBox.margin>
+      <TableView fx:id="tabelaPessoas"
+                 prefHeight="0.0"
+                 prefWidth="562.0">
+         <columns>
+            <TableColumn fx:id="colunaId"
+                         prefWidth="44.0"
+                         text="Id" />
+            <TableColumn fx:id="colunaNome"
+                         prefWidth="278.0"
+                         text="Nome" />
+            <TableColumn fx:id="colunaAltura"
+                         prefWidth="155.0"
+                         text="Altura" />
+            <TableColumn fx:id="colunaPeso"
+                         prefWidth="191.0"
+                         text="Peso" />
+            <TableColumn fx:id="colunaImc"
+                         prefWidth="221.0"
+                         text="IMC" />
+         </columns>
       </TableView>
    </children>
 </VBox>
